@@ -1,0 +1,14 @@
+version: 1.0
+bootstrap: |+
+  apt-get update
+  apt install -y zip unzip libzip-dev
+  docker-php-ext-install zip
+  composer require --dev barryvdh/laravel-ide-helper
+  composer install
+  php artisan ide-helper:generate
+  php artisan ide-helper:meta
+profile:
+  name: empty
+include:
+  - name: PhpVulnerablePathsInspection
+
